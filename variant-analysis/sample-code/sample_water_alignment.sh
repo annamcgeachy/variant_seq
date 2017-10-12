@@ -1,14 +1,14 @@
 #!/bin/bash
 
-WATER=/home/mfallahi/EMBOSS-6.6.0/emboss/water
-SAMTOOLS=/usr/bin/samtools
-DIR=/GENNAS/Mfallahi
+WATER=/gennas/Anna/from_mohammad/water
+SAMTOOLS=samtools
+DIR=/home/anna/variant-analysis
 
-REF=$DIR/ampliseq_207_plus21.fasta
-QUERY=$DIR/binary_basecall_mean_Rec_Ntrick_170801_B_call_+0+0_-07-07.fasta
+REF=$DIR/ampliseq_genome/ampliseq_207_binary.fasta
+QUERY=$DIR/binary_basecall.fasta
 
 #OUTPUT=$DIR/binary_basecall_mean_Rec_Ntrick_170801_B_call_+0+0_-07-07_unique_modifiedheader.12.water.sam
-OUTPUT=$DIR/binary_basecall_mean_Rec_Ntrick_170801_B_call_+0+0_-07-07.1211.water.sam
+OUTPUT=$DIR/binary_basecall.water.sam
 max=1
 
 # ------------------------------------------------------------------------------
@@ -56,7 +56,7 @@ done < $REF
 # Find top N from SAM file
 grep -vE '^@' $OUTPUT.tmp | \
 \
-sort -T /GENNAS/Mfallahi -r -Vk1,1 -Vk12,12 | \
+sort -T /home/anna/variant-analysis -r -Vk1,1 -Vk12,12 | \
 \
 awk -v max=${max} '\
 BEGIN \
