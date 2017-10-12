@@ -27,6 +27,9 @@ join -1 4 -2 1 -t $'\t' -a 1 <(sort -k4,4 tmp) <(sort -k1,1 tmp2) > tmp3.txt
 awk '{print $1,$13,$2,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25,$26 }' tmp3.txt>output.sam
 
 ## You may need to add the SAM header copied from binary_basecall.fasta.1211.vs.binary_sequencee1000_1211.sam
+## ALSO, the file has spaces instead of tabs. if you don't fix that, it will continually spit back an error
+## in the header and an empty bam file. consider bbedit or:
+## sed 's/ \+ /\t/g' inputfile > outputfile
 
 sam_file_name="output"
 #awk '!/^@/ { t = $1; $1 = $3; $3 = t; print; } ' ${sam_file_name}.sam>${sam_file_name}.reordered.sam
