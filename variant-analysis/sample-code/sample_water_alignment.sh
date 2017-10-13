@@ -1,6 +1,6 @@
 #!/bin/bash
 
-WATER=/gennas/Anna/from_mohammad/water
+WATER=/home/anna/EMBOSS-6.6.0/emboss/water
 SAMTOOLS=samtools
 DIR=/home/anna/variant-analysis
 
